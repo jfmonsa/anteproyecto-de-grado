@@ -20,28 +20,27 @@
   "[latex]": {
     "editor.defaultFormatter": "James-Yu.latex-workshop",
     "editor.wordWrap": "on"
-  }
-
-  // "latex-workshop.latex.autoBuild.run": "never",
-  // "latex-workshop.latex.tools": [
-  //   {
-  //     "name": "latexmk",
-  //     "command": "/home/jfmonsa/.TinyTeX/bin/x86_64-linux/latexmk",
-  //     "args": [
-  //       "-synctex=1",
-  //       "-interaction=nonstopmode",
-  //       "-file-line-error",
-  //       "-pdf",
-  //       "-outdir=%OUTDIR%",
-  //       "%DOC%"
-  //     ]
-  //   }
-  // ],
-  // "latex-workshop.latex.recipes": [
-  //   {
-  //     "name": "latexmk",
-  //     "tools": ["latexmk"]
-  //   }
-  // ]
+  },
+  "cSpell.words": [
+    "Bertalanffy",
+    "biblatex",
+    "Esponda",
+    "Fargate",
+    "Kansara",
+    "Kyadasu",
+    "legaltech",
+    "Legaltech",
+    "mantenibilidad",
+    "Opara",
+    "Paralegales",
+    "provisionados",
+    "Royer",
+    "Webcloster"
+  ],
+  "cSpell.ignorePaths": [
+    "bibliografia.bib",
+    "settings.json",
+    "extensions.json",
+    "install.sh"
+  ]
 }
-//"latex-workshop.message.error.show": false,
