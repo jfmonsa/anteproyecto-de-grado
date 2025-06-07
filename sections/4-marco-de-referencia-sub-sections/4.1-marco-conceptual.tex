@@ -1,0 +1,29 @@
+\subsection{Marco Conceptual}
+
+\subsubsection{Computación en la Nube}
+
+"La computación en la nube es un modelo que permite el acceso ubicuo, conveniente y bajo demanda a un conjunto compartido de recursos de computación configurables, los cuales pueden ser rápidamente provisionados y liberados con una mínima gestión o interacción con el proveedor de servicios" \cite{Mell2011}. Este modelo ofrece beneficios significativos como elasticidad, pago por consumo y alta disponibilidad, factores esenciales en la modernización de plataformas como Paralegales.
+
+La computación en nube se puede clasificar en modelos de servicio. Entre los cuales se destacan: \textit{Software as a Service} (SaaS), \textit{Platform as a Service} (PaaS), \textit{Infrastructure as a Service} (IaaS), \textit{Backend as a Service} (BaaS), etc \cite{Mell2011}. BaaS, ofrece a los desarrolladores funcionalidades listas para usar, como bases de datos, autenticación, almacenamiento de archivos, notificaciones \textit{push}, etc. Sin necesidad de gestionar servidores o infraestructura, por medio de un SDK. Firebase, utilizado en la etapa inicial de Paralegales es un ejemplo de BaaS. Por otro lado, Paralegales también hace uso de algunos servicios bajo el modelo \textit{Function as a Service} (FaaS), como es el caso de AWS Lambda.
+
+\subsubsection{Vendor Lock-in}
+
+En el contexto de la computación en nube, el término \textit{vendor lock-in} se refiere a la dificultad de cambiar de proveedor de servicios una vez que una organización ha adoptado una plataforma específica.  Esta dependencia puede deberse a diversos factores, tales como los altos costos de migración de datos, la utilización de interfaces de programación de aplicaciones (APIs) propietarias o incompatibles con estándares abiertos, y la integración profunda con servicios específicos del proveedor. Según \textcite{OparaMartins2016}, esta dependencia puede llevar a limitaciones en la portabilidad de aplicaciones, mayores costos a largo plazo y una menor capacidad de adaptación a nuevas tecnologías. En el caso de Paralegales, la alta dependencia del ecosistema Firebase representa un riesgo estratégico que se busca mitigar mediante la migración hacia AWS.
+
+\subsubsection{Arquitectura de Software en la Nube}
+
+El diseño de arquitecturas robustas y escalables en la nube requiere la aplicación de buenas prácticas reconocidas internacionalmente. AWS propone el Well-Architected Framework, que establece principios fundamentales para la creación de sistemas seguros, eficientes y resilientes \cite{AWS2024}. Este marco guía la toma de decisiones en áreas como seguridad, fiabilidad, eficiencia en el rendimiento, optimización de costos y excelencia operativa, todos ellos factores considerados para la nueva arquitectura de Paralegales.
+
+\subsubsection{Seguridad en aplicaciones Web}
+
+Garantizar la seguridad de las aplicaciones web es un desafío creciente en el entorno tecnológico actual. El OWASP Top 10 identifica las principales amenazas de seguridad, incluyendo \textit{Insecure Design}, que se refiere a deficiencias estructurales en la arquitectura de software que permiten vulnerabilidades explotables \cite{OWASP2021}. La exposición de lógica de negocio crítica en el \textit{frontend}, como ocurre actualmente en Paralegales, constituye un ejemplo claro de esta categoría de riesgo.
+
+\subsubsection{Patrones de Diseño y Mejores Prácticas}
+
+En el desarrollo de soluciones tecnológicas robustas y escalables, la adopción de patrones de diseño y mejores prácticas constituye una pieza clave para garantizar la calidad del software, su mantenibilidad y su evolución futura. A lo largo de los años, la comunidad de ingeniería de software ha establecido enfoques estandarizados que ayudan a resolver problemas comunes de forma reutilizable y comprensible.
+
+Uno de los grupos más influyentes en este ámbito es el de los denominados \textit{"Gang of Four"} (GoF), quienes documentaron 23 patrones de diseño orientados a objetos (OOP) ampliamente utilizados \cite{Gamma1994}. Martin Fowler \cite{Fowler2002}, también ha contribuido significativamente con enfoques arquitectónicos y patrones de diseño. Además de los enfoques OOP, las influencias de la programación funcional (FP) han ganado terreno en arquitecturas modernas. Algunos de estos patrones están siendo usados en Paralegales, como Inyección de Dependencias, Abstract Repository Pattern, Iterator, Adapter, Closures, Funciones de Orden Superior etc.
+
+Por otro lado, prácticas como \textit{Clean Code}, promovidas por Robert C. Martin \cite{Martin2008}, buscan mejorar la legibilidad, claridad y simplicidad del código fuente. Estas se complementan con enfoques arquitectónicos como el \textit{Domain-Driven Design} (DDD), el cual propone construir el software en torno al dominio del negocio mediante el uso de un lenguaje ubicuo y estructuras organizadas \cite{Evans2003}.
+
+Además, la codificación de pruebas automatizadas integradas en pipelines de integración y entrega continua (CI/CD), permite asegurar calidad, reducir errores y mejorar la confiabilidad en cada fase del ciclo de vida del desarrollo de software. Junto con prácticas como el \textit{Test-Driven Development} (TDD), se promueve un desarrollo más robusto y mantenible, con menos errores y un ciclo de retroalimentación más rápido y eficiente.
