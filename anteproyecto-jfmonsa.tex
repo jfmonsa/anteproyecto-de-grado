@@ -1,0 +1,92 @@
+\documentclass[letterpaper,12pt,oneside]{article}
+
+% --- Package Config ---
+\usepackage[utf8]{inputenc}         % Character encoding
+\usepackage[spanish]{babel}         % Spanish language support
+\usepackage{csquotes}               % Recommended by biblatex for babel compatibility
+\usepackage{lmodern} % Latin Modern font
+\usepackage[T1]{fontenc}          % Codificación de salida de caracteres (obligatorio para copiar bien)
+
+% --- Page Layout and Margins ---
+\usepackage{ragged2e}
+\usepackage{anysize}                % Flexible margin settings
+
+% \marginsize{3cm}{2.5cm}{1cm}{2cm} % Example: {left}{right}{top}{bottom}
+
+% --- Tables ---
+\usepackage{float}                  % Improved table/figure placement
+\usepackage{booktabs}               % Professional-quality tables
+\usepackage{tabularx}              % Tables with flexible width
+\usepackage{longtable}              % Tables spanning multiple pages
+\usepackage{array}                  % Extended column definitions
+\usepackage{pbox}                   % Line breaks in table cells
+\usepackage{colortbl}               % Color in tables
+
+% --- Math ---
+\usepackage{amsmath}                % Advanced math typesetting
+
+% --- Graphics and Rotation ---
+\usepackage{rotating}               % Rotate tables and figures
+\usepackage{pdflscape}              % Landscape pages in PDF
+
+\usepackage{caption}
+\captionsetup{skip=5pt} % controls space after caption
+\addtolength{\captionmargin}{-1em} % optional: adjust as needed
+
+% --- Colors ---
+\usepackage{color}                  % Colored text
+\definecolor{naranja}{rgb}{1,0.5,0}
+\definecolor{rojo}{rgb}{1,0,0}
+\definecolor{SteelBlue}{rgb}{0.3,0.5,0.7}
+
+% --- Bibliography ---
+\usepackage[style=ieee]{biblatex}   % IEEE bibliography style
+\addbibresource{bibliografia.bib}
+\usepackage[numbib,notlof,notlot]{tocbibind} % Numbered bibliography in ToC
+
+% --- Hyperlinks ---
+\usepackage[pdftex,bookmarks=true,linkcolor=black,citecolor=black,colorlinks=true,urlcolor=black]{hyperref}
+
+% --- Figures and Subfigures ---
+\usepackage{subfig}                 % Subfigures
+
+\usepackage{enumitem}               % Customizable lists
+\usepackage{url}                    % URL formatting
+
+\begin{document}
+\renewcommand{\tablename}{Tabla}
+\justifying % Justify text in the document
+
+% ---------- Portada, Contraportada y Resumen ----------
+\include{sections/0.0-portada}
+\portada
+\contraportada
+
+\input{sections/0.1-resumen.tex}
+
+% ---------- Tablas ----------
+\newpage
+\renewcommand\contentsname{Tabla de Contenido}
+\tableofcontents
+
+\newpage
+\renewcommand\listtablename{Lista de tablas}
+\listoftables
+
+\newpage
+\renewcommand\listfigurename{Lista de Figuras}
+\listoffigures
+
+% ---------- Chapters ----------
+\input{sections/1-introduccion.tex}
+\input{sections/2-descripcion-de-la-empresa.tex}
+\input{sections/3-formulacion-del-problema.tex}
+
+% ----------Referencias----------
+\newpage
+\printbibliography
+\nocite{*}
+
+\end{document}
+
+% TODO: debe estar justificado
