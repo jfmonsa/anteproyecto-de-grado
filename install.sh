@@ -26,7 +26,7 @@ if ! grep -q 'TinyTeX/bin/x86_64-linux' ~/.profile 2>/dev/null; then
 fi
 
 echo "=== Installing required LaTeX packages ==="
-tlmgr install babel-spanish tlmgr install hyphen-spanish colortbl pdflscape caption biblatex biblatex-ieee tocbibind subfig enumitem pbox anysize csquotes chktex biber ragged2e
+tlmgr install babel-spanish tlmgr install hyphen-spanish colortbl pdflscape caption biblatex biblatex-ieee tocbibind subfig enumitem pbox anysize csquotes chktex biber ragged2e grfext
 # If the package contains excecutable, the add them to PATH
 tlmgr path add
 
@@ -41,9 +41,10 @@ if ! command -v tex-fmt &>/dev/null; then
 fi
 
 # Recommended editor setup
-echo "=== Installing LaTeX Workshop extension for VS Code ==="
+echo "=== Installing LaTeX Workshop & LTex (for grammar) extensions for VS Code ==="
 if command -v code &>/dev/null; then
     code --install-extension James-Yu.latex-workshop --force
+    code --install-extension valentjn.vscode-ltex --force
 else
     echo "Warning: VS Code (code) command not found. Skipping LaTeX Workshop extension installation."
 fi
