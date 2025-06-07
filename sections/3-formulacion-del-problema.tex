@@ -6,7 +6,7 @@ Actualmente, la plataforma Paralegales presenta una serie de problemas estructur
 
 Uno de los efectos más graves de esta exposición es el alto riesgo de inseguridad en la plataforma, ya que la lógica sensible puede ser inspeccionada, manipulada o replicada por terceros, lo que constituye un ejemplo de Insecure Design, una categoría de riesgo identificada en el OWASP Top 10 \cite{OWASP2021}.
 
-Además, la dependencia de servicios propietarios como Firebase, fenómeno conocido como vendor lock-in \cite{OparaMartins2014,OparaMartins2014,Harauzek2022}, genera costos operativos más elevados y compromete la viabilidad económica de la plataforma a largo plazo. Asimismo, la falta de centralización en un único ecosistema tecnológico provoca fragmentación, lo que dificulta la integración, el mantenimiento y la escalabilidad del sistema.
+Además, la dependencia de servicios propietarios como Firebase, fenómeno conocido como vendor lock-in \cite{OparaMartins2016, OparaMartins2014,Harauzek2022}, genera costos operativos más elevados y compromete la viabilidad económica de la plataforma a largo plazo. Asimismo, la falta de centralización en un único ecosistema tecnológico provoca fragmentación, lo que dificulta la integración, el mantenimiento y la escalabilidad del sistema.
 
 Actualmente, Paralegales utiliza funciones AWS Lambda para manejar algunos casos de uso que requieren lógica crítica del lado del servidor. Sin embargo, mantener lógica crítica tanto en el frontend como en el backend (mediante Lambda) agrava la fragmentación tecnológica. Desde el punto de vista de diseño de sistemas (system design), esta dispersión de componentes críticos genera una arquitectura inconsistente y difícil de escalar y mantener, como se ilustra también en la \autoref{fig:arbol_problemas}.
 
@@ -36,3 +36,5 @@ De este problema principal se derivan las siguientes preguntas específicas:
   \item \textbf{¿Qué enfoques técnicos y metodológicos deben adoptarse durante el proceso de migración para garantizar la integridad de los datos y la continuidad del servicio?}
   \item \textbf{¿Qué medidas deben tomarse para optimizar los costos en AWS sin comprometer la calidad del servicio?}
 \end{enumerate}
+
+Estas preguntas guiarán el desarrollo del proyecto y permitirán estructurar un plan de migración que no solo atienda las necesidades actuales, sino que también prepare a la plataforma para un crecimiento seguro y sostenible.
