@@ -20,13 +20,13 @@ if ! command -v tlmgr &>/dev/null; then
 fi
 
 export PATH="$HOME/.TinyTeX/bin/x86_64-linux:$PATH"
-if ! grep -q 'TinyTeX/bin/x86_64-linux' ~/.zshrc 2>/dev/null; then
-    echo 'export PATH="$HOME/.TinyTeX/bin/x86_64-linux:$PATH"' >> ~/.zshrc
-    echo "Added TinyTeX bin to PATH in ~/.zshrc"
+if ! grep -q 'TinyTeX/bin/x86_64-linux' ~/.profile 2>/dev/null; then
+    echo 'export PATH="$HOME/.TinyTeX/bin/x86_64-linux:$PATH"' >> ~/.profile
+    echo "Added TinyTeX bin to PATH in ~/.profile"
 fi
 
 echo "=== Installing required LaTeX packages ==="
-tlmgr install babel-spanish colortbl pdflscape caption biblatex biblatex-ieee tocbibind subfig enumitem pbox anysize csquotes chktex biber ragged2e
+tlmgr install babel-spanish tlmgr install hyphen-spanish colortbl pdflscape caption biblatex biblatex-ieee tocbibind subfig enumitem pbox anysize csquotes chktex biber ragged2e
 # If the package contains excecutable, the add them to PATH
 tlmgr path add
 
