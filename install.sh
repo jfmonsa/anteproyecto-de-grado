@@ -14,6 +14,9 @@ echo "=== Installing TinyTeX if necessary ==="
 if ! command -v tlmgr &>/dev/null; then
     wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh
     export PATH="$HOME/bin:$PATH"
+
+    # Change mirror to avoid issues with the default CTAN mirror
+    tlmgr option repository https://mirror.ctan.org/systems/texlive/tlnet
 fi
 
 export PATH="$HOME/.TinyTeX/bin/x86_64-linux:$PATH"
@@ -24,7 +27,8 @@ fi
 
 echo "=== Installing required LaTeX packages ==="
 tlmgr install babel-spanish colortbl pdflscape caption biblatex biblatex-ieee tocbibind subfig enumitem pbox anysize csquotes chktex biber ragged2e
-
+# If the package contains excecutable, the add them to PATH
+tlmgr path add
 
 echo "=== Installing tex-fmt (LaTex formatter written in rust) ==="
 if ! command -v tex-fmt &>/dev/null; then

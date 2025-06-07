@@ -19,3 +19,11 @@ tasks:
       - pdflatex main.tex
       - pdflatex main.tex
     silent: true
+
+  update_dependencies:
+    desc: Update LaTeX dependencies
+    aliases: [update_deps]
+    cmds:
+      - tlmgr update --self --all
+      - tlmgr path add
+    silent: true
