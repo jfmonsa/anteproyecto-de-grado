@@ -1,0 +1,47 @@
+{
+  "files.exclude": {
+    "**/*.aux": true,
+    "**/*.log": true,
+    "**/*.out": true,
+    "**/*.toc": true,
+    "**/*.bbl": true,
+    "**/*.blg": true,
+    "**/*.lof": true,
+    "**/*.lot": true,
+    "**/*.fls": true,
+    "**/*.fdb_latexmk": true,
+    "**/*.synctex.gz": true,
+    "**/*.dvi": true,
+    "**/*.run.xml": true,
+    "**/*.bcf": true
+  },
+  "latex-workshop.formatting.latex": "tex-fmt",
+  "editor.formatOnSave": true,
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+    "editor.wordWrap": "on"
+  }
+
+  // "latex-workshop.latex.autoBuild.run": "never",
+  // "latex-workshop.latex.tools": [
+  //   {
+  //     "name": "latexmk",
+  //     "command": "/home/jfmonsa/.TinyTeX/bin/x86_64-linux/latexmk",
+  //     "args": [
+  //       "-synctex=1",
+  //       "-interaction=nonstopmode",
+  //       "-file-line-error",
+  //       "-pdf",
+  //       "-outdir=%OUTDIR%",
+  //       "%DOC%"
+  //     ]
+  //   }
+  // ],
+  // "latex-workshop.latex.recipes": [
+  //   {
+  //     "name": "latexmk",
+  //     "tools": ["latexmk"]
+  //   }
+  // ]
+}
+//"latex-workshop.message.error.show": false,
