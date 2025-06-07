@@ -23,7 +23,7 @@ if ! grep -q 'TinyTeX/bin/x86_64-linux' ~/.zshrc 2>/dev/null; then
 fi
 
 echo "=== Installing required LaTeX packages ==="
-tlmgr install babel-spanish colortbl pdflscape caption biblatex biblatex-ieee tocbibind subfig enumitem pbox anysize csquotes chktex biber
+tlmgr install babel-spanish colortbl pdflscape caption biblatex biblatex-ieee tocbibind subfig enumitem pbox anysize csquotes chktex biber ragged2e
 
 
 echo "=== Installing tex-fmt (LaTex formatter written in rust) ==="
@@ -63,5 +63,14 @@ else
     pdflatex "$TEXFILE"
 fi
 
-echo "=== Listo. Proyecto inicializado exitosamente. ==="
+echo "=== Taskfile for common tasks ==="
+if ! command -v task &>/dev/null; then
+    if command -v npm &>/dev/null; then
+        npm install -g @go-task/cli
+    else
+        echo "Error: npm is not installed. Please install Node.js and npm first."
+        exit 1
+    fi
+fi
 
+echo "=== Listo. Proyecto inicializado exitosamente. ==="
