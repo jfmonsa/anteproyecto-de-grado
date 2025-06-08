@@ -161,75 +161,76 @@
 }
 
 \renewcommand{\arraystretch}{1.4}
-\scriptsize{
-  \begin{longtable}{|
-      >{\raggedright\arraybackslash}p{2.5cm}|
-      >{\raggedright\arraybackslash}p{2.5cm}|
-      >{\raggedright\arraybackslash}p{2cm}|
-      >{\raggedright\arraybackslash}p{2.5cm}|
-      >{\raggedright\arraybackslash}p{2cm}|
-      >{\raggedright\arraybackslash}p{2cm}|
-    }
-    \hline
+\begingroup
+\scriptsize
+\begin{longtable}{|
+    >{\raggedright\arraybackslash}p{2.5cm}|
+    >{\raggedright\arraybackslash}p{2.5cm}|
+    >{\raggedright\arraybackslash}p{2cm}|
+    >{\raggedright\arraybackslash}p{2.5cm}|
+    >{\raggedright\arraybackslash}p{2cm}|
+    >{\raggedright\arraybackslash}p{2cm}|
+  }
+  \hline
 
-    % Table Header
-    \marcoLogicoHeader
-    \hline
-    \endfirsthead
+  % Table Header
+  \marcoLogicoHeader
+  \hline
+  \endfirsthead
 
-    % Encabezado para las siguientes páginas:
-    \hline
-    \marcoLogicoHeader
-    \hline
-    \endhead
+  % Encabezado para las siguientes páginas:
+  \hline
+  \marcoLogicoHeader
+  \hline
+  \endhead
 
-    \hline \multicolumn{6}{|c|}{{Continúa en la siguiente página}} \\ \hline
-    \endfoot
-    \endlastfoot
+  \hline \multicolumn{6}{|c|}{{Continúa en la siguiente página}} \\ \hline
+  \endfoot
+  \endlastfoot
 
-    % Table Body
-    \tableCell\objetivoEspecificoA &
-    \tableCell\objetivoEspecificoAActividades &
-    \tableCell\objetivoEspecificoAMetodologia &
-    \tableCell\objetivoEspecificoAEntregables &
-    \tableCell\objetivoEspecificoAIndicador &
-    \tableCell\objetivoEspecificoAMeta \\
-    \hline
+  % Table Body
+  \tableCell\objetivoEspecificoA &
+  \tableCell\objetivoEspecificoAActividades &
+  \tableCell\objetivoEspecificoAMetodologia &
+  \tableCell\objetivoEspecificoAEntregables &
+  \tableCell\objetivoEspecificoAIndicador &
+  \tableCell\objetivoEspecificoAMeta \\
+  \hline
 
-    \tableCell\objetivoEspecificoB &
-    \tableCell\objetivoEspecificoBActividades &
-    \tableCell\objetivoEspecificoBMetodologia &
-    \tableCell\objetivoEspecificoBEntregables &
-    \tableCell\objetivoEspecificoBIndicador &
-    \tableCell\objetivoEspecificoBMeta \\
-    \hline
+  \tableCell\objetivoEspecificoB &
+  \tableCell\objetivoEspecificoBActividades &
+  \tableCell\objetivoEspecificoBMetodologia &
+  \tableCell\objetivoEspecificoBEntregables &
+  \tableCell\objetivoEspecificoBIndicador &
+  \tableCell\objetivoEspecificoBMeta \\
+  \hline
 
-    %
-    \tableCell\objetivoEspecificoC &
-    \tableCell\objetivoEspecificoCActividades &
-    \tableCell\objetivoEspecificoCMetodologia &
-    \tableCell\objetivoEspecificoCEntregables &
-    \tableCell\objetivoEspecificoCIndicador &
-    \tableCell\objetivoEspecificoCMeta \\
-    \hline
+  %
+  \tableCell\objetivoEspecificoC &
+  \tableCell\objetivoEspecificoCActividades &
+  \tableCell\objetivoEspecificoCMetodologia &
+  \tableCell\objetivoEspecificoCEntregables &
+  \tableCell\objetivoEspecificoCIndicador &
+  \tableCell\objetivoEspecificoCMeta \\
+  \hline
 
-    \tableCell\objetivoEspecificoD &
-    \tableCell\objetivoEspecificoDActividades &
-    \tableCell\objetivoEspecificoDMetodologia &
-    \tableCell\objetivoEspecificoDEntregables &
-    \tableCell\objetivoEspecificoDIndicador &
-    \tableCell\objetivoEspecificoDMeta \\
-    \hline
+  \tableCell\objetivoEspecificoD &
+  \tableCell\objetivoEspecificoDActividades &
+  \tableCell\objetivoEspecificoDMetodologia &
+  \tableCell\objetivoEspecificoDEntregables &
+  \tableCell\objetivoEspecificoDIndicador &
+  \tableCell\objetivoEspecificoDMeta \\
+  \hline
 
-    \tableCell\objetivoEspecificoDocument &
-    \tableCell\objetivoEspecificoDocumentActividades &
-    \tableCell\objetivoEspecificoDocumentMetodologia &
-    \tableCell\objetivoEspecificoDocumentEntregables &
-    \tableCell\objetivoEspecificoDocumentIndicador &
-    \tableCell\objetivoEspecificoDocumentMeta \\
-    \hline
+  \tableCell\objetivoEspecificoDocument &
+  \tableCell\objetivoEspecificoDocumentActividades &
+  \tableCell\objetivoEspecificoDocumentMetodologia &
+  \tableCell\objetivoEspecificoDocumentEntregables &
+  \tableCell\objetivoEspecificoDocumentIndicador &
+  \tableCell\objetivoEspecificoDocumentMeta \\
+  \hline
 
-    \caption{Marco Lógico de la Propuesta. Fuente: Elaboración propia.}
-    \label{tab:marco_logico}
-  \end{longtable}
-}
+  \caption{Marco Lógico de la Propuesta. Fuente: Elaboración propia.}
+  \label{tab:marco_logico}
+\end{longtable}
+\endgroup
