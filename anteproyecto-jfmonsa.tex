@@ -36,38 +36,40 @@
 \definecolor{SteelBlue}{rgb}{0.3,0.5,0.7}
 
 % Hyperlinks
-\usepackage[pdftex,bookmarks=true,linkcolor=black,citecolor=black,colorlinks=true,urlcolor=black]{hyperref}
+\usepackage[pdftex,unicode,bookmarks=true,linkcolor=black,citecolor=black,colorlinks=true,urlcolor=black]{hyperref}
 
 % Figures and Sub figures
 \usepackage{subfig}                 % Sub figures
 \usepackage{enumitem}               % Customizable lists
 \usepackage{url}                    % URL formatting
 \usepackage{caption}
+\usepackage{adjustbox}
 \captionsetup{skip=1em, font=small}
-
-% Custom Spaces between paragraphs
-\setlength{\parskip}{1em}
-\setlength{\parindent}{0pt}
+\captionsetup[table]{name=Tabla}
 
 % Bibliography
 \usepackage[style=ieee]{biblatex}   % IEEE bibliography style
-\addbibresource{bibliografia.bib}
 \usepackage[numbib,notlof,notlot]{tocbibind} % Numbered bibliography in ToC
+\addbibresource{bibliografia.bib}
 
 % Tables
-\renewcommand{\arraystretch}{1.4}
+\renewcommand\arraystretch{1.4}
 \captionsetup[table]{justification=centering}
 
 % Renaming for Spanish
 \renewcommand\contentsname{Tabla de Contenido}
 \renewcommand\listtablename{Lista de tablas}
 \renewcommand\listfigurename{Lista de Figuras}
-\renewcommand{\tablename}{Tabla}
+\renewcommand\tablename{Tabla}
 
+% Custom Spaces between paragraphs
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0pt}
+
+% ---------- Document Setup ----------
 \begin{document}
 \justifying % Justify text in the document
 
-% ---------- Document Setup ----------
 % Portada, Contraportada y Resumen
 \include{sections/0.0-portada}
 \portada
