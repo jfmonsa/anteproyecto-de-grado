@@ -1,11 +1,25 @@
+% Utils for tables
+% params:
+% #1: width of the cell
+% #2: content of the cell
 \newcommand{\grayTableHeaderCell}[2]{%
   \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}%
     \parbox[c]{#1}{\centering\textbf{#2}}
   }
 }
 
+% params:
+% #1: content of the cell
 \newcommand{\tableCell}[1]{
   \vspace{4pt} % más aire arriba
   #1
   \vspace{4pt} % más aire abajo
+}
+
+% params:
+% #1: number of columns
+\newcommand{\continuacionTablaFooter}[1]{
+  \hline \multicolumn{#1}{|c|}{{Continúa en la siguiente página}} \\ \hline
+  \endfoot
+  \endlastfoot
 }
