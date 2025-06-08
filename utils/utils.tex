@@ -1,0 +1,11 @@
+\newcommand{\grayTableHeaderCell}[2]{%
+  \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}%
+    \parbox[c]{#1}{\centering\textbf{#2}}
+  }
+}
+
+\newcommand{\tableCell}[1]{
+  \vspace{4pt} % más aire arriba
+  #1
+  \vspace{4pt} % más aire abajo
+}
