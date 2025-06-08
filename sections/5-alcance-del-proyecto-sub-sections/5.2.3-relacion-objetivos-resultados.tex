@@ -1,0 +1,72 @@
+\subsubsection{Relación objetivos específicos y resultados esperados}
+
+% avoid nested structures in table
+\newcommand\objetivoEspecificoAResulados{
+  \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt]
+    \item Reducción del riesgo de exposición de lógica sensible al moverla fuera del cliente.
+    \item Trazabilidad de la ejecución de la lógica crítica mediante CloudWatch y otros servicios de monitoreo de AWS.
+  \end{itemize}
+}
+
+\newcommand\objetivoEspecificoBResultados{
+  \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt]
+    \item Eliminación gradual de acoplamientos con servicios propietarios de Google.
+    \item Minimizar el impacto de la migración garantizando una transición controlada.
+  \end{itemize}
+}
+
+\newcommand\objetivoEspecificoCResultados{
+  \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt]
+    \item Infraestructura organizada y mantenible sobre AWS, que garantice la integridad y trazabilidad de los datos durante la migración.
+    \item Migración exitosa de datos desde Firestore a DynamoDB mediante una pipeline ETL.
+    \item Registro de usuarios migrados correctamente a Amazon Cognito con integraciones funcionales.
+  \end{itemize}
+}
+
+\newcommand\objetivoEspecificoDResultados{
+  \begin{itemize}[leftmargin=1em, topsep=2pt, itemsep=2pt]
+    \item Las partes del sistema afectadas por la migración cuentan con una cobertura mínima del 70\% en pruebas automatizadas.
+    \item Se implementa una pipeline de integración continua (CI) que ejecuta automáticamente las pruebas en cada cambio o despliegue.
+    \item Se detectan y corrigen errores de manera temprana gracias a la automatización del proceso de validación del código.
+  \end{itemize}
+}
+
+% \centering
+% \renewcommand{\arraystretch}{1.2}
+\begin{longtable}{|p{8cm}|p{8cm}|}
+  \hline
+
+  % Table Header
+  \grayTableHeaderCell{8cm}{Objetivo específico} &
+  \grayTableHeaderCell{8cm}{Resultados esperados} \\
+  \hline
+
+  % Table Body
+  \tableCell{\objetivoEspecificoA}   &
+  \tableCell{\objetivoEspecificoAResulados} \\
+  \hline
+
+  \tableCell{\objetivoEspecificoB}   &
+  \tableCell{\objetivoEspecificoBResultados} \\
+  \hline
+  \endfirsthead
+
+  \tableCell{\objetivoEspecificoB}   &
+  \tableCell{\objetivoEspecificoBResultados} \\
+  \hline
+  \endhead
+
+  \hline \multicolumn{2}{|c|}{{Continúa en la siguiente página}} \\ \hline
+  \endfoot
+  \endlastfoot
+
+  \tableCell{\objetivoEspecificoC}   &
+  \tableCell{\objetivoEspecificoCResultados} \\
+  \hline
+
+  \tableCell{\objetivoEspecificoD}   &
+  \tableCell{\objetivoEspecificoDResultados} \\
+  \hline
+  \caption{Objetivos específicos y resultados esperados. Fuente: Elaboración propia.}
+  \label{tab:objetivos_resultados}
+\end{longtable}
