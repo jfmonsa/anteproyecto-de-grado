@@ -1,0 +1,99 @@
+\subsection{Metodología de Desarrollo de Software}
+
+Dado que el proyecto consiste en la migración y adaptación tecnológica de una plataforma ya funcional, se requiere una metodología ágil que permita implementar mejoras continuas, validar cambios técnicos y mantener una alta calidad en el software sin perder flexibilidad. Por ello, este trabajo de grado adopta los principios y valores definidos en el Manifiesto Ágil \cite{AgileManifesto2001}. Para tomar una decisión fundamentada, se realizó una comparación multicriterio entre tres paradigmas populares de desarrollo ágil: SCRUM, que se clasifica como un marco de trabajo \cite{ScrumGuide2020}; y \textit{Extreme Programming} (XP) junto con \textit{Feature-Driven Development} (FDD), ambas reconocidas como metodologías de desarrollo.
+
+% -- Table Setup --
+\newcommand{\comparativaMetodologiasHeader}{
+  \grayTableHeaderCell{3cm}{Criterio} &
+  \grayTableHeaderCell{3cm}{SCRUM} &
+  \grayTableHeaderCell{3cm}{XP} &
+  \grayTableHeaderCell{3cm}{FDD} \\
+}
+
+\renewcommand{\arraystretch}{1.4}
+\begingroup
+\scriptsize
+\begin{longtable}{|
+    >{\raggedright\arraybackslash}p{3cm}|
+    >{\raggedright\arraybackslash}p{3cm}|
+    >{\raggedright\arraybackslash}p{3cm}|
+    >{\raggedright\arraybackslash}p{3cm}|
+  }
+  \hline
+
+  % Table Header
+  \comparativaMetodologiasHeader
+  \hline
+  \endfirsthead
+
+  % Encabezado para las siguientes páginas:
+  \hline
+  \comparativaMetodologiasHeader
+  \hline
+  \endhead
+
+  \continuacionTablaFooter{4}
+  \endfoot
+  \endlastfoot
+
+  % Table Body
+  \tableCell{ Orientación } &
+  \tableCell{ Gestión de proyectos iterativa basada en roles y eventos } &
+  \tableCell{ Desarrollo técnico intensivo con foco en calidad del código } &
+  \tableCell{Desarrollo centrado en funcionalidades del sistema } \\
+  \hline
+
+  \tableCell{ Planificación} &
+  \tableCell{ Sprint Planning, backlog de producto y de sprint } &
+  \tableCell{ Historias de usuario, planificación continua } &
+  \tableCell{ Modelo inicial y listado detallado de features } \\
+  \hline
+
+  \tableCell{ Iteraciones } &
+  \tableCell{ Sprints de 1 a 4 semanas } &
+  \tableCell{ Iteraciones muy cortas (1 semana o menos) } &
+  \tableCell{ Iteraciones basadas en funcionalidades } \\
+  \hline
+
+  \tableCell{ Control de calidad } &
+  \tableCell{ Revisión de sprint, retrospectivas, testing por parte del equipo } &
+  \tableCell{ Desarrollo guiado por pruebas (TDD), integración continua, pair programming } &
+  \tableCell{ Enfoque más estructurado y menos centrado en pruebas } \\
+  \hline
+
+  \tableCell{ Tamaño del equipo recomendado } &
+  \tableCell{ menos de 10 personas \cite{ScrumGuide2020}. } &
+  \tableCell{ Equipos pequeños y altamente colaborativos } &
+  \tableCell{ Equipos más grandes con roles definidos (desarrolladores, arquitectos, modeladores) } \\
+  \hline
+
+  \tableCell{ Adecuación al proyecto de migración } &
+  \tableCell{ Buena para seguimiento y coordinación, pero requiere adaptación técnica adicional } &
+  \tableCell{ Excelente por su enfoque técnico (ideal para migración de lógica crítica y refactorización) }&
+  \tableCell{ Menos adecuado en etapas tempranas o de reestructuración } \\
+  \hline
+
+  \tableCell{ Documentación } &
+  \tableCell{ Ligeramente documentado, foco en entregables funcionales } &
+  \tableCell{ Baja formalidad documental, más foco en código limpio } &
+  \tableCell{ Documentación moderada y estructurada } \\
+  \hline
+
+  \tableCell{ Entrega de valor } &
+  \tableCell{ Al final de cada sprint } &
+  \tableCell{ Entregas muy frecuentes (incluso diarias) } &
+  \tableCell{ Entrega continua por funcionalidad } \\
+  \hline
+
+  \caption{Comparativa entre las metodologías de desarrollo de software de interés. Fuente: Elaboración propia.}
+  \label{tab:comparativa_metodologias}
+\end{longtable}
+\endgroup
+
+Como se puede observar en la \autoref{tab:comparativa_metodologias}, tanto SCRUM como XP se ajustan bien al contexto del proyecto actual. Sin embargo, SCRUM destaca por su estructura ligera pero efectiva para la planificación y seguimiento, especialmente útil dado que el equipo de Paralegales ya trabaja con iteraciones, reuniones de revisión y planificación de manera semanal. Además, su claridad de roles y enfoque incremental permiten mantener un flujo de trabajo ordenado y adaptativo \cite{ScrumGuide2020}.
+
+Por estas razones, SCRUM ha sido seleccionada como la metodología base para el desarrollo del software en este proyecto. No obstante, se complementará con prácticas de XP, como TDD y \textit{pair programming}, cuando sea pertinente, para mejorar la calidad del código y la colaboración técnica.
+
+Adicionalmente, el proyecto busca adoptar progresivamente una cultura DevOps, integrando prácticas como la contribución continua a los repositorios de código, automatización de pruebas y despliegues, y un enfoque centrado en la seguridad, trazabilidad y control del ciclo de vida del software. Estas prácticas, alineadas con principios de integración y entrega continua (CI/CD) \cite{Bass2015}, ya han comenzado a ser aplicadas dentro de Paralegales y constituyen un eje fundamental para garantizar despliegues seguros y eficientes.
+
+Finalmente, es importante enfatizar que las metodologías ágiles y marcos de trabajo no deben concebirse como estructuras rígidas o absolutas, sino como guías adaptables que deben ajustarse de forma pragmática a las características, recursos y necesidades particulares de cada proyecto \cite{BoehmTurner2004}.
