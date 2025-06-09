@@ -49,7 +49,7 @@
 
 % Bibliography
 \usepackage[style=ieee]{biblatex}   % IEEE bibliography style
-\usepackage[numbib,notlof,notlot]{tocbibind} % Numbered bibliography in ToC
+\usepackage[numbib,notlof,notlot,nottoc]{tocbibind} % Numbered bibliography in ToC
 \addbibresource{bibliografia.bib}
 
 % Tables
@@ -57,10 +57,15 @@
 \captionsetup[table]{justification=centering}
 
 % Renaming for Spanish
-\renewcommand\contentsname{Tabla de Contenido}
-\renewcommand\listtablename{Lista de tablas}
-\renewcommand\listfigurename{Lista de Figuras}
-\renewcommand\tablename{Tabla}
+\addto\captionsspanish{
+  \renewcommand{\contentsname}{Tabla de Contenido}
+}
+\addto\captionsspanish{
+  \renewcommand{\listtablename}{Índice de Tablas}
+}
+\addto\captionsspanish{
+  \renewcommand{\listfigurename}{Índice de Figuras}
+}
 
 % Custom Spaces between paragraphs
 \setlength{\parskip}{1em}
@@ -70,15 +75,15 @@
 \begin{document}
 \justifying % Justify text in the document
 \include{utils/utils.tex} % Include utility commands
+\include{utils/objetivos-especificos.tex} %  variables for specific objectives
 
-% Portada, Contraportada y Resumen
+% -- Portada, Contraportada y Resumen --
 \include{sections/0.0-portada}
 \portada
 \contraportada
 \include{sections/0.1-resumen.tex}
 
-% Indices
-\newpage
+% -- Indices --
 \tableofcontents
 
 \newpage
@@ -87,14 +92,18 @@
 \newpage
 \listoffigures
 
-% ---------- Chapters ----------
+% -- Chapters --
 \include{sections/1-introduccion.tex}
 \include{sections/2-descripcion-de-la-empresa.tex}
 \include{sections/3-formulacion-del-problema.tex}
 \include{sections/4-marco-de-referencia.tex}
 \include{sections/5-alcance-del-proyecto.tex}
 \include{sections/6-metodologias.tex}
-% ----------Referencias----------
+\include{sections/7-programa-hitos.tex}
+\include{sections/8-presupuesto.tex}
+\include{sections/9-impacto-ambiental.tex}
+
+% -- Bibliography --
 \newpage
 \printbibliography
 \nocite{*}
