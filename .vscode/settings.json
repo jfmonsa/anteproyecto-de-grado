@@ -23,24 +23,30 @@
   },
   "cSpell.words": [
     "Bertalanffy",
+    "biber",
     "biblatex",
     "Chavarriaga",
+    "chktex",
     "Colciencias",
     "Esponda",
     "Fargate",
+    "instalela",
     "Kansara",
     "kean",
     "Kyadasu",
     "legaltech",
     "Legaltech",
+    "libxcrypt",
     "mantenibilidad",
     "Opara",
+    "pacman",
     "Paralegales",
     "polyfiling",
     "powerstat",
     "provisionados",
     "Royer",
     "Sansui",
+    "tlmgr",
     "upme",
     "Webcloster"
   ],
@@ -48,8 +54,10 @@
     "bibliografia.bib",
     "settings.json",
     "extensions.json",
-    "install.sh",
+    "scripts/*",
+    "latex-packages.txt",
     ".gitignore",
-    "Taskfile.yml"
+    "Taskfile.yml",
+    ".github/*"
   ]
 }
