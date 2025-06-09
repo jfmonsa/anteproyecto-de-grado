@@ -14,10 +14,10 @@ tasks:
     desc: Compile the LaTeX project
     aliases: [compile]
     cmds:
-      - pdflatex main.tex
-      - bibtex main
-      - pdflatex main.tex
-      - pdflatex main.tex
+      - pdflatex anteproyecto-jfmonsa.tex
+      - bibtex anteproyecto-jfmonsa.tex
+      - pdflatex anteproyecto-jfmonsa.tex
+      - pdflatex anteproyecto-jfmonsa.tex
     silent: true
 
   update_dependencies:
