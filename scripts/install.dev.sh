@@ -1,34 +1,15 @@
 #!/bin/bash
+# Script to install and configure the project dev environment setup
 
 set -e
 
-echo "=== Checking basic dependencies ==="
-for cmd in perl wget; do
-    if ! command -v $cmd &>/dev/null; then
-        echo "Error: $cmd is not installed. Install it and try again."
-        exit 1
-    fi
-done
+chmode +x scripts/utils/basic-install.sh
+./scripts/utils/basic-install.sh
 
-echo "=== Installing TinyTeX if necessary ==="
-if ! command -v tlmgr &>/dev/null; then
-    wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh
-    export PATH="$HOME/bin:$PATH"
-
-    # Change mirror to avoid issues with the default CTAN mirror
-    tlmgr option repository https://mirror.ctan.org/systems/texlive/tlnet
-fi
-
-export PATH="$HOME/.TinyTeX/bin/x86_64-linux:$PATH"
 if ! grep -q 'TinyTeX/bin/x86_64-linux' ~/.profile 2>/dev/null; then
     echo 'export PATH="$HOME/.TinyTeX/bin/x86_64-linux:$PATH"' >> ~/.profile
     echo "Added TinyTeX bin to PATH in ~/.profile"
 fi
-
-echo "=== Installing required LaTeX packages ==="
-tlmgr install babel-spanish tlmgr install hyphen-spanish colortbl pdflscape caption biblatex biblatex-ieee tocbibind subfig enumitem pbox anysize csquotes chktex biber ragged2e grfext
-# If the package contains excecutable, the add them to PATH
-tlmgr path add
 
 echo "=== Installing tex-fmt (LaTex formatter written in rust) ==="
 if ! command -v tex-fmt &>/dev/null; then
@@ -44,7 +25,8 @@ fi
 echo "=== Installing LaTeX Workshop & LTex (for grammar) extensions for VS Code ==="
 if command -v code &>/dev/null; then
     code --install-extension James-Yu.latex-workshop --force
-    code --install-extension valentjn.vscode-ltex --force
+    code --install-extension streetsidesoftware.code-spell-checker --force
+    code --install-extension streetsidesoftware.code-spell-checker --force
 else
     echo "Warning: VS Code (code) command not found. Skipping LaTeX Workshop extension installation."
 fi

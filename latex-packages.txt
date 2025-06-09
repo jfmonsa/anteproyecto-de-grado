@@ -1,0 +1,18 @@
+# Latex packages needed by the project.
+
+babel-spanish
+hyphen-spanish
+colortbl pdflscape
+caption
+biblatex
+biblatex-ieee
+tocbibind
+subfig
+enumitem
+pbox
+anysize
+csquotes
+chktex
+biber
+ragged2e
+grfext
