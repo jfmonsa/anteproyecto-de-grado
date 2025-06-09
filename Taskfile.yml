@@ -15,7 +15,7 @@ tasks:
     aliases: [compile]
     cmds:
       - pdflatex anteproyecto-jfmonsa.tex
-      - bibtex anteproyecto-jfmonsa.tex
+      - biber anteproyecto-jfmonsa
       - pdflatex anteproyecto-jfmonsa.tex
       - pdflatex anteproyecto-jfmonsa.tex
     silent: true
