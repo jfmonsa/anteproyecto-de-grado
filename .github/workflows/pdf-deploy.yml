@@ -20,7 +20,8 @@ jobs:
 
       - name: Install TinyTeX and LaTex deps
         run: |
-          chmod +x ./scripts/utils/basic-install.sh
+          chmod +x ./scripts/install.ci.sh
+          ./scripts/install.ci.sh
 
       - name: Build PDF
         run: |
