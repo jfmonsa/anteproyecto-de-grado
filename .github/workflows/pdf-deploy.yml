@@ -24,7 +24,7 @@ jobs:
           ./scripts/install.ci.sh
 
       - name: Install LaTeX (texlive)
-        run: sudo apt-get update && sudo apt-get install -y texlive-full
+        run: sudo apt-get update && sudo apt-get install -y texlive-core
 
       - name: Build PDF
         run: |
