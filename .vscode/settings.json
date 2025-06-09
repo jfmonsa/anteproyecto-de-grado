@@ -48,6 +48,8 @@
     "bibliografia.bib",
     "settings.json",
     "extensions.json",
-    "install.sh"
+    "install.sh",
+    ".gitignore",
+    "Taskfile.yml"
   ]
 }
