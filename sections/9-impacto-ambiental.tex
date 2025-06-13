@@ -7,6 +7,8 @@ Dada la importancia de evaluar el impacto ambiental de las actividades del proye
 \newcommand{\deviceBName}{ Monitor Sansui ES-22X3 }
 \newcommand{\deviceCName}{ Conexión a internet }
 
+\newcommand\consumoEnergeticoCaption{Consumo energético de los dispositivos. \hspace{1em}}
+
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|c|}
@@ -26,11 +28,13 @@ Dada la importancia de evaluar el impacto ambiental de las actividades del proye
     Total & 49,98 & 3,0 & 6,0 \\
     \hline
   \end{tabular}
-  \caption{Consumo energético de los dispositivos. Fuente: Elaboración propia.}
+  \caption[\consumoEnergeticoCaption]{\consumoEnergeticoCaption Fuente: Elaboración propia.}
   \label{tab:consumo_energetico_dispositivos}
 \end{table}
 
 Por otra parte, la \autoref{tab:consumo_energetico_previsto} presenta el consumo de cada dispositivo con base en las horas efectivas de trabajo previstas para las fases iniciales de la operación.
+
+\newcommand\consumoEnergeticoPrevistoCaption{Consumo energético previsto de los dispositivos. \hspace{1em}}
 
 \begin{table}[H]
   \centering
@@ -55,7 +59,7 @@ Por otra parte, la \autoref{tab:consumo_energetico_previsto} presenta el consumo
     \textbf{Total día} & - & - & - & - & - & - & \textbf{0.990} & \textbf{0.999} \\
     \hline
   \end{tabular}
-  \caption{Consumo energético previsto de los dispositivos. Fuente: Elaboración propia.}
+  \caption[\consumoEnergeticoPrevistoCaption]{\consumoEnergeticoPrevistoCaption Fuente: Elaboración propia.}
   \label{tab:consumo_energetico_previsto}
 \end{table}
 
@@ -69,6 +73,8 @@ Por otra parte, la \autoref{tab:consumo_energetico_previsto} presenta el consumo
 
 Suponiendo que por semana se trabajan 5 días, se presentan los consumos semanales, fantasma, mensual y anual en la \autoref{tab:consumo_energetico_totalizado}.
 
+\newcommand\consumoEnergeticoTotalCaption{Consumo energético totalizado. \hspace{1em}}
+
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|c|c|}
@@ -81,7 +87,7 @@ Suponiendo que por semana se trabajan 5 días, se presentan los consumos semanal
     6,993 & 0,27 & 29,97 & 364,64 \\
     \hline
   \end{tabular}
-  \caption{Consumo energético totalizado. Fuente: Elaboración propia.}
+  \caption[\consumoEnergeticoTotalCaption]{\consumoEnergeticoTotalCaption Fuente: Elaboración propia.}
   \label{tab:consumo_energetico_totalizado}
 \end{table}
 
@@ -96,6 +102,8 @@ Por otro lado, para calcular la huella de carbono generada por el consumo energ�
 
 Esta fórmula permite estimar las emisiones de gases de efecto invernadero expresadas en toneladas de $CO_2$ equivalente ($Tn$ $CO_2e$), a partir del consumo eléctrico anual, el factor de emisión del sistema interconectado nacional (SIN) y el potencial de calentamiento global del gas considerado.
 
+\newcommand\huellaDeCarbonoCaption{Huella de carbono generada por el consumo energético. \hspace{1em}}
+
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|c|}
@@ -108,7 +116,7 @@ Esta fórmula permite estimar las emisiones de gases de efecto invernadero expre
     0,13 & 2,95884 & 1 & 0,3846 \\
     \hline
   \end{tabular}
-  \caption{Huella de carbono generada por el consumo energético. Fuente: Elaboración propia.}
+  \caption[\huellaDeCarbonoCaption]{\huellaDeCarbonoCaption Fuente: Elaboración propia.}
   \label{tab:huella_de_carbono}
 \end{table}
 

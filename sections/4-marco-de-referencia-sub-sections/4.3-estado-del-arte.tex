@@ -4,10 +4,12 @@
 
 Como lo indica J. Michel \cite{Michael2021}, Firebase ofrece una arquitectura de dos capas, donde las aplicaciones cliente (web o móviles) interactúan directamente con servicios \textit{backend} como Firestore, Authentication y Cloud Functions. Esta simplicidad facilita el desarrollo rápido de MVPs, pero puede presentar desafíos en escalabilidad, control y flexibilidad a medida que la aplicación crece. Obsérvese la \autoref{fig:firebase_architecture}.
 
+\newcommand\firebaseArchitectureCaption{Diagrama de Arquitectura de Firebase. \hspace{1em}}
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{img/figures/fig3-firebase-architecture.png}
-  \caption{Diagrama de Arquitectura de Firebase. Fuente: Tomado de \cite{Michael2021}.}
+  \caption[\firebaseArchitectureCaption]{\firebaseArchitectureCaption Fuente: Tomado de \cite{Michael2021}.}
   \label{fig:firebase_architecture}
 \end{figure}
 
@@ -15,10 +17,12 @@ En contraste, como se muestra en la \autoref{fig:amplify_architecture}, AWS adop
 
 En este enfoque, el cliente utiliza el SDK de AWS Amplify para comunicarse con los servicios del \textit{backend}, los cuales están implementados mediante funciones Lambda, las cuales pueden ser accedidas mediante una API REST usando Amazon API Gateway. De esta forma, se evita el acceso directo desde el frontend a las bases de datos o a la lógica sensible del negocio, incrementando la seguridad y permitiendo una evolución más controlada de la arquitectura.
 
+\newcommand\AWSDiagramaArquitecturaCaption{Diagrama de Arquitectura de AWS Amplify. \hspace{1em}}
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\textwidth]{img/figures/fig4-amplify-architecture.png}
-  \caption{Diagrama de Arquitectura de AWS Amplify. Fuente: Tomado de \cite{Michael2021}}
+  \caption[\AWSDiagramaArquitecturaCaption]{\AWSDiagramaArquitecturaCaption Fuente: Tomado de \cite{Michael2021}}
   \label{fig:amplify_architecture}
 \end{figure}
 
@@ -28,6 +32,7 @@ Este enfoque permite construir arquitecturas completamente adaptadas a las neces
 
 Por otro lado, la migración de Firebase a AWS implica identificar servicios equivalentes que ofrezcan funcionalidades similares, pero con mayor flexibilidad y escalabilidad. La \autoref{tab:aws_firebase_comparison_services} presenta la correspondencia general entre servicios de Firebase y sus equivalentes en AWS.
 
+\newcommand\correspondenciaFirebaseAWSCaption{Correspondencia general entre los servicios de Firebase y sus equivalentes en AWS. \hspace{1em}}
 \begin{table}[H]
   \centering
   \begin{tabular}{|l|l|}
@@ -48,7 +53,7 @@ Por otro lado, la migración de Firebase a AWS implica identificar servicios equ
     Firebase Hosting & AWS Amplify \\
     \hline
   \end{tabular}
-  \caption{Correspondencia general entre los servicios de Firebase y sus equivalentes en AWS. Fuente: Elaboración propia.}
+  \caption[\correspondenciaFirebaseAWSCaption]{\correspondenciaFirebaseAWSCaption Fuente: Elaboración propia.}
   \label{tab:aws_firebase_comparison_services}
 \end{table}
 
@@ -87,10 +92,11 @@ Esta pipeline puede construirse utilizando servicios totalmente gestionados de A
 
 Además de la documentación oficial, B. Shank \cite{Shank2021}, Sr. Startup SA en AWS, implementó un repositorio de código abierto en en AWS CDK que puede servir como guía práctica para realizar la migración. Dicho repositorio, incluye dos fases de despliegue y múltiples \textit{stacks} que replican los servicios clave de Firebase: Firestore, Authentication y Cloud Storage, utilizando sus equivalentes en AWS (DynamoDB, Cognito y S3, respectivamente).
 
+\newcommand\DiagramaMigracionAWSCaption{Diagrama de Infraestructura de la migración propuesta por B. Shank. \hspace{1em}}
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{img/figures/fig5-etl-pipeline-aws.png}
-\caption{Diagrama de Infraestructura de la migración propuesta por B. Shank. Fuente: Tomado de \cite{Shank2021}.}
+\caption[\DiagramaMigracionAWSCaption]{\DiagramaMigracionAWSCaption Fuente: Tomado de \cite{Shank2021}.}
 \label{fig:aws_migration_pipeline}
 \end{figure}
 
@@ -101,10 +107,11 @@ La segunda, también detallada en la \autoref{fig:aws_migration_pipeline}, fase 
 \subsubsection{Bibliografía Complementaria}
 Como complemento a los enfoques técnicos revisados, el trabajo de \textcite{Kansara2024} aporta una visión más amplia sobre los desafíos y metodologías emergentes en procesos de migración de bases de datos hacia la nube. Su estudio enfatiza la automatización, la integridad de los datos y la optimización del rendimiento como pilares fundamentales para garantizar migraciones eficientes y seguras. En particular, el autor presenta un diagrama de alto nivel que descompone el proceso en fases estructuradas: extracción y validación de datos, refactorización de lógica de negocio, transferencia segura y orquestación de servicios en la nube. Esta representación, ilustrada en la \autoref{fig:etl_process_diagram}, proporciona un marco útil para entender la transición desde arquitecturas legadas hacia entornos escalables y distribuidos basados en servicios nativos de la nube.
 
+\newcommand\migrationProcessDiagramCaption{Diagrama del proceso de migración a base de datos en la nube. \hspace{1em}}
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{img/figures/fig6-etl-process.png}
-\caption{Proceso de migración a base de datos en la nube. Fuente: Tomado de \cite{Kansara2024}.}
+\caption[\migrationProcessDiagramCaption]{\migrationProcessDiagramCaption Fuente: Tomado de \cite{Kansara2024}.}
 \label{fig:etl_process_diagram}
 \end{figure}
 
