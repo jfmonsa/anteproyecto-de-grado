@@ -1,41 +1,42 @@
 \section{Formulación del problema}
 
 \subsection{Descripción del problema}
-Actualmente, la plataforma Paralegales presenta una serie de problemas estructurales derivados de decisiones técnicas tomadas durante su etapa inicial de desarrollo. Como se aprecia en la \autoref{fig:arbol_problemas}, el principal problema identificado es la exposición de lógica de negocio crítica en el cliente, lo que genera una serie de consecuencias negativas a nivel de seguridad, arquitectura, costos y gestión tecnológica.
+Paralegales no es un producto concebido desde cero en el marco de este proyecto de grado, sino una plataforma en operación, con base de usuarios real y desarrollo continuo, perteneciente a la empresa Webcloster S.A.S. Su construcción inicial estuvo guiada por una premisa explícita: alcanzar el mercado lo antes posible para validar la propuesta de valor en el sector \textit{legaltech} colombiano. Para sostener ese ritmo, el equipo se apoyó intensivamente en Firebase como plataforma de \textit{Backend como Servicio} (BaaS), aprovechando su SDK para resolver autenticación, persistencia y consultas en tiempo real con un mínimo de infraestructura propia. Sobre ese sustrato se fueron incorporando, de manera incremental, funciones AWS Lambda escritas en Go para soportar flujos que requerían lógica del lado del servidor, integraciones externas o procesamiento asíncrono.
 
-Uno de los efectos más graves de esta exposición es el alto riesgo de inseguridad en la plataforma, ya que la lógica sensible puede ser inspeccionada, manipulada o replicada por terceros, lo que constituye un ejemplo de \textit{Insecure Design}, una categoría de riesgo identificada en el OWASP Top 10 \cite{OWASP2021}.
+Esta evolución orgánica produjo un sistema funcional y comercialmente viable, pero también acumuló una deuda técnica significativa derivada de decisiones tomadas bajo presión de tiempo \cite{BirrEngwall2024}. A diferencia de un proyecto nuevo, donde es posible elegir la arquitectura sin restricciones, cualquier intervención sobre Paralegales debe preservar la continuidad del servicio, respetar los datos existentes en producción y minimizar la fricción para una base de usuarios activa. Estas restricciones condicionan de manera decisiva el espacio de soluciones disponibles y descartan, en la práctica, intervenciones disruptivas como reescrituras desde cero o migraciones totales de proveedor de nube en un único movimiento.
 
-Además, la dependencia de servicios propietarios como Firebase, fenómeno conocido como \textit{vendor lock-in} \cite{OparaMartins2016, OparaMartins2014,Harauzek2022}, genera costos operativos más elevados y compromete la viabilidad económica de la plataforma a largo plazo. Asimismo, la falta de centralización en un único ecosistema tecnológico provoca fragmentación, lo que dificulta la integración, el mantenimiento y la escalabilidad del sistema.
+A partir del análisis del estado inicial del sistema, se identifican cuatro frentes problemáticos que motivan el presente trabajo:
 
-Actualmente, Paralegales utiliza funciones AWS Lambda (\textit{backend}) para manejar algunos casos de uso que requieren lógica crítica del lado del servidor. Sin embargo, mantener lógica crítica tanto en el \textit{frontend} como en el \textit{backend} agrava la fragmentación tecnológica. Desde el punto de vista de diseño de sistemas (\textit{system design}), esta dispersión de componentes críticos genera una arquitectura inconsistente y difícil de escalar y mantener, como se ilustra también en la \autoref{fig:arbol_problemas}.
+\begin{enumerate}
+  \item \textbf{Exposición de lógica de negocio crítica en el cliente:} la implementación apoyada en el SDK de Firebase llevó a que parte importante de la lógica sensible —validaciones, orquestación de operaciones sobre la base de datos y reglas de acceso a recursos— residiera directamente en el \textit{frontend}. Esta condición es inspeccionable, manipulable y replicable por terceros, configurando un caso paradigmático de \textit{Insecure Design}, una de las categorías de riesgo identificadas en el OWASP Top 10 \cite{OWASP2021}.
 
-En la raíz del problema, como se expone en la \autoref{fig:arbol_problemas}, se encuentra la priorización de la velocidad en el desarrollo sobre la adopción de buenas prácticas \cite{BirrEngwall2024}. Esta decisión condujo a una dependencia parcial de Firebase y sus tecnologías propietarias, así como a la omisión de delegar lógica crítica en entornos de ejecución que corren del lado del servidor como AWS Lambda o Cloud Functions, incrementando los riesgos mencionados.
+  \item \textbf{Fragmentación arquitectónica entre Firebase y AWS:} la coexistencia de servicios Firebase (Auth, Firestore) y funciones AWS Lambda sin patrones arquitectónicos claros que gobernaran sus fronteras generó un sistema heterogéneo, difícil de razonar y de evolucionar. La ausencia de una capa que articulara explícitamente cuándo y cómo el cliente debe hablar con uno u otro proveedor incrementaba el acoplamiento entre las distintas capas y dificultaba la introducción de nuevos casos de uso sin tocar componentes no relacionados.
 
-Por lo tanto, se evidencia la necesidad urgente de una reestructuración tecnológica que permita resolver estos problemas, mejorando la seguridad, reduciendo costos, y garantizando una arquitectura sólida y escalable para el futuro del proyecto.
+  \item \textbf{Dependencia parcial de un proveedor único:} el uso intensivo del ecosistema Firebase introdujo el fenómeno conocido como \textit{vendor lock-in} \cite{OparaMartins2016, OparaMartins2014, Harauzek2022}, una condición que reduce el margen de maniobra técnica y económica de la plataforma a largo plazo. Si bien este factor por sí solo no justifica una intervención disruptiva, sí refuerza la conveniencia de introducir abstracciones que mantengan abierta la opción de migrar componentes específicos en el futuro.
 
-\newcommand\captionArbolProblemas{Árbol de problemas.\hspace{1em}}
+  \item \textbf{Ausencia de observabilidad transversal y de prácticas formales de aseguramiento de calidad:} la plataforma carece de un sistema unificado para registrar, correlacionar y exponer el comportamiento del sistema en producción, especialmente sobre integraciones críticas con servicios externos como la Rama Judicial. De manera complementaria, las prácticas de ciclo de vida de desarrollo (\textit{linting}, formateo, validación de \textit{commits}, integración continua y pruebas automatizadas) no están formalmente automatizadas, lo que dificulta sostener velocidad de cambio sin degradar la confiabilidad del producto.
+\end{enumerate}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.85\textwidth]{img/figures/fig2-arbol-de-problemas.png}
-  \caption[\captionArbolProblemas]{\captionArbolProblemas Fuente: Elaboración Propia.}
-  \label{fig:arbol_problemas}
-\end{figure}
+Por lo tanto, se evidencia la necesidad de una evolución arquitectónica que permita mitigar estos problemas —mejorando la seguridad, reduciendo la fragmentación y fortaleciendo la mantenibilidad y la trazabilidad del sistema— sin incurrir en el costo y el riesgo que implicaría una migración total del proveedor de nube para un producto ya en producción.
 
 \subsection{Definición del Problema}
 A partir del análisis realizado, se plantea como problema central a resolver el siguiente:
 \begin{quote}
-  \textbf{¿Cómo migrar y adaptar la infraestructura de la plataforma Paralegales desde Firebase hacia AWS de manera que se mejore la seguridad, se elimine la exposición de lógica crítica en el cliente, se reduzcan los costos operativos y se optimice la escalabilidad y mantenibilidad del sistema?}
+  \textbf{¿Cómo evolucionar la arquitectura de la plataforma Paralegales hacia un diseño híbrido Firebase y AWS que mitigue la exposición de lógica de negocio crítica en el cliente, reduzca la fragmentación arquitectónica, introduzca observabilidad transversal y consolide prácticas de aseguramiento de calidad continuo, sin disrumpir el servicio en producción ni incurrir en el costo y el riesgo de una migración total de proveedor de nube?}
 \end{quote}
 
-De este problema principal se derivan las siguientes preguntas específicas:
+De esta pregunta central se derivan las siguientes preguntas específicas, cada una asociada a un eje de intervención del proyecto:
 
 \begin{enumerate}
-  \item \textbf{¿Qué servicios de AWS pueden reemplazar adecuadamente los servicios actuales de Firebase utilizados en Paralegales?}
-  \item \textbf{¿Qué estrategias de migración permiten trasladar de forma segura y eficiente tanto los datos almacenados en la base de datos como los registros de usuarios desde Firebase hacia AWS, minimizando el impacto operativo?}
-  \item \textbf{¿Cómo puede estructurarse una arquitectura basada en AWS que mejore la seguridad y reduzca la fragmentación tecnológica?}
-  \item \textbf{¿Qué enfoques técnicos y metodológicos deben adoptarse durante el proceso de migración para garantizar la integridad de los datos y la continuidad del servicio?}
-  \item \textbf{¿Qué medidas deben tomarse para optimizar los costos en AWS sin comprometer la calidad del servicio?}
+  \item \textbf{¿Qué mecanismos del lado del servidor —funciones \textit{serverless} y/o un \textit{Backend-for-Frontend}— permiten reubicar la lógica de negocio crítica fuera del cliente sin requerir la reescritura integral del \textit{frontend} existente ni la sustitución del proveedor de autenticación y persistencia, y bajo qué criterios decidir entre uno u otro?}
+
+  \item \textbf{¿Cómo estructurar internamente el \textit{frontend} y el \textit{backend} para que los dominios funcionales y las capas técnicas puedan evolucionar de forma independiente, habilitando además la sustitución futura del motor de persistencia sin acoplar dicha decisión a la lógica de negocio?}
+
+  \item \textbf{¿Bajo qué criterios decidir qué responsabilidades permanecen en Firebase y cuáles se trasladan o se construyen sobre AWS, de modo que la fragmentación arquitectónica se reduzca sin acometer una migración disruptiva del proveedor de nube?}
+
+  \item \textbf{¿Cómo dotar al sistema de capacidades de observabilidad y telemetría transversales que permitan diagnosticar fallos y degradaciones a través de componentes heterogéneos —BFF, funciones \textit{serverless} e integraciones con proveedores externos como la Rama Judicial—, correlacionando eventos a lo largo de todo el flujo de ejecución?}
+
+  \item \textbf{¿Qué prácticas de aseguramiento de calidad deben automatizarse a lo largo del ciclo de vida del desarrollo —desde los \textit{hooks} locales hasta la integración continua y las pruebas automatizadas— para sostener la velocidad de cambio sin degradar la confiabilidad ni la seguridad del sistema?}
 \end{enumerate}
 
-Estas preguntas guiarán el desarrollo del proyecto y permitirán estructurar un plan de migración que no solo atienda las necesidades actuales, sino que también prepare a la plataforma para un crecimiento seguro y sostenible.
+Estas preguntas guiarán el desarrollo del proyecto y permitirán estructurar una intervención que no solo atienda las necesidades actuales de la plataforma, sino que también la prepare para un crecimiento seguro, mantenible y sostenible.

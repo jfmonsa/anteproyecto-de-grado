@@ -2,87 +2,89 @@
 
 % --- Objective A ---
 \newcommand{\objetivoEspecificoAMetodologia}{
-  Desarrollo ágil basado en SCRUM y prácticas DevOps, con énfasis en integración continua y validaciones automatizadas.
+  Desarrollo ágil basado en SCRUM y prácticas DevOps; clasificación de cada flujo según su afinidad con el ciclo de vida de la sesión para decidir entre función \textit{serverless} y BFF.
 }
 
 \newcommand{\objetivoEspecificoAEntregables}{
   \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt]
-    \item Código fuente migrado y desplegado en AWS Lambda
+    \item Funciones AWS Lambda para la lógica de servicios e integraciones asíncronas.
+    \item Capa \textit{Backend-for-Frontend} en Nuxt que encapsula las integraciones externas.
   \end{itemize}
 }
 
 \newcommand{\objetivoEspecificoAIndicador}{
-  Porcentaje de funciones críticas migradas y en funcionamiento en AWS Lambda
+  Porcentaje de lógica crítica reubicada fuera del cliente y flujos sensibles instrumentados para auditoría.
 }
 
 \newcommand{\objetivoEspecificoAMeta}{
-  100\% de la lógica crítica migrada de \textit{frontend} a Lambda con cobertura de pruebas y validación de funcionamiento
+  Lógica crítica de los módulos de procesos y campañas ejecutándose del lado del servidor, sin exposición en el cliente.
 }
 
 % --- Objective B ---
 \newcommand{\objetivoEspecificoBMetodologia}{
-  Iteraciones SCRUM con entregas incrementales y validación de servicios AWS equivalentes.
+  Refactorización incremental guiada por patrones arquitectónicos (DDD y separación por capas), validada mediante pruebas unitarias.
 }
 
 \newcommand{\objetivoEspecificoBEntregables}{
   \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt]
-    \item Módulos refactorizados sin dependencia de Firebase
+    \item \textit{Frontend} organizado en Nuxt Layers por \textit{bounded context}.
+    \item \textit{Backend} en Go con separación \textit{Handler--Service--Repository} y repositorios por interfaz.
   \end{itemize}
 }
 
 \newcommand{\objetivoEspecificoBIndicador}{
-  Número de módulos refactorizados y porcentaje de código sin Firebase
+  Número de dominios/capas aislados de forma independiente y cobertura de pruebas del \textit{service} con \textit{mocks} del repositorio.
 }
 
 \newcommand{\objetivoEspecificoBMeta}{
-  100\% de los módulos críticos operando sin Firebase y utilizando servicios de AWS
+  \textit{Frontend} y \textit{backend} desacoplados que permitan la evolución independiente de cada dominio y la sustitución del motor de persistencia sin tocar la lógica de negocio.
 }
 % --- Objective C ---
 \newcommand{\objetivoEspecificoCMetodologia}{
-  Diseño arquitectónico de infraestructura basado en buenas prácticas de AWS Well-Architected Framework y metodología ETL para migración de datos.
+  Diseño basado en principios de observabilidad y SRE, con infraestructura como código mediante CloudFormation.
 }
 
 \newcommand{\objetivoEspecificoCEntregables}{
   \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt]
-    \item Diagrama de arquitectura la pipeline de migración de datos y usuarios hacia AWS.
-    \item Documentación de la arquitectura
+    \item Esquema de telemetría estructurada JSON e interceptores HTTP en \textit{frontend} y \textit{backend}.
+    \item \textit{Dashboards}, alarmas y notificaciones a Telegram aprovisionados como código.
   \end{itemize}
 }
 
 \newcommand{\objetivoEspecificoCIndicador}{
   \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt]
-    \item Base de datos y usuarios migrados correctamente
-    \item Funcionami- ento de arquitectura desplegada
+    \item Capacidad de correlacionar eventos de extremo a extremo entre componentes heterogéneos.
+    \item Subsistema de observabilidad versionado como código.
   \end{itemize}
 }
 
 \newcommand{\objetivoEspecificoCMeta}{
-  100\% de datos y registros de usuarios migrados y funcionando según pruebas
+  Subsistema de observabilidad operativo que permita diagnosticar fallos y degradaciones en producción correlacionando eventos en flujos reales.
 }
 
 % --- Objective D ---
 \newcommand{\objetivoEspecificoDMetodologia}{
-  \textit{Test Driven Development} (TDD) como enfoque principal y cultura DevOps para CI/CD
+  Cultura DevOps con automatización del ciclo de vida del desarrollo mediante \textit{hooks} locales e integración continua.
 }
 
 \newcommand{\objetivoEspecificoDEntregables}{
   \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt]
-    \item Conjunto de pruebas automatizadas
-    \item Pipeline de CI implementada y artefactos sobre la cobertura de código generados en la misma
+    \item \textit{Hooks} de Git con Lefthook (ESLint, Prettier, Commitlint).
+    \item Pipeline de CI en GitHub Actions y suite de pruebas de reglas de seguridad de Firestore con Vitest.
   \end{itemize}
 }
 
 \newcommand{\objetivoEspecificoDIndicador}{
   \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt]
-    \item Número de pruebas implementadas y porcentaje de cobertura de pruebas
-    \item Pipeline operativa
+    \item Validaciones automatizadas ejecutándose en cada \textit{commit} y \textit{pull request}.
+    \item Pruebas de reglas de seguridad operativas.
   \end{itemize}
 }
 
 \newcommand{\objetivoEspecificoDMeta}{
   \begin{itemize}[leftmargin=*, topsep=0pt, itemsep=0pt]
-    \item 70\% o más de cobertura de pruebas en código refactorizado
-    \item Pipeline funcional con ejecución automática
+    \item Prácticas de aseguramiento de calidad automatizadas y operativas.
+    \item Prevención de regresiones funcionales y de seguridad sin depender de la disciplina individual.
   \end{itemize}
 }
 
